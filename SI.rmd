@@ -39,6 +39,7 @@ library(grid)
 library(pander)
 library(kfigr)
 source("rmd_func.r")
+source("rmd_SI_func.r")
 ```
 
 
