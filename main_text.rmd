@@ -1,0 +1,130 @@
+---
+geometry: margin=1in
+link-citations: yes
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ecology.csl
+bibliography: library.bib
+fontsize: 12pt
+font-famliy: "Times New Roman"
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    template: rmd_template.tex
+    fig_caption: yes
+    keep_tex: yes
+    toc: no
+    number_sections: no
+    includes:
+        in_header: format.sty
+    pandoc_args:
+      - "--filter"
+      - "pandoc-crossref"
+  bookdown::word_document2:
+    fig_width: 6
+    fig_caption: yes
+    reference_docx: rmd_style.docx
+    pandoc_args:
+    - "--filter"
+    - "pandoc-crossref"
+    - "--mathml"
+---
+
+
+```{r caching, include=FALSE}
+library(methods)
+library(knitr)
+library(kableExtra)
+library(png)
+library(grid)
+library(pander)
+source("rmd_func.r")
+```
+
+
+**Title: Title of your manuscript**
+
+$$ $$
+
+First Author^1,2^ Second Author^2^, and Third Author^3^
+
+$$ $$
+
+^1^ First Affiliation
+
+^2^ Second Affiliation
+
+^3^ Third Affiliation
+
+
+`r page_break("Abstract")`
+
+Your abstract.
+
+# Introduction
+
+Your introduction [@Wright2004a]. Some more text [@Kraft2008]. More text [@Hubbell2001].
+
+# Material and Methods
+
+Your Material and Methods. We fitted XXXX:
+
+\begin{equation}
+N_{ij} \sim NB(\mu_{ij}, \phi)
+(\#eq:NB)
+\end{equation}
+
+where $\mu_{ij}$ is xxxxxx, xxxxxxxx,
+
+\begin{equation}
+\mu_{ij} \times v_i = exp(\Sigma \beta_{jk} z_{ik})
+(\#eq:mu)
+\end{equation}
+
+where $\beta_{jk}$ is xxxxxx. Prior for $\phi$ in Eq. \@ref(eq:NB) was specified as xxxxx.
+
+We found XXX (Fig. \@ref(fig:scatplt) and Table \@ref(tab:tblm)). We also found xxx (Fig. \@ref(fig:boxplt)) yay!
+
+# Discussion
+
+Some texts.
+
+# References
+
+<div id="refs"></div>
+
+
+`r page_break()`
+
+
+Table: (\#tab:tblm). Summary of the regression model.
+
+```{r tblm, echo = FALSE}
+fit <- lm(mpg ~ wt * cyl, data = mtcars)
+tb1 <- pander(fit, caption = "")
+tb1
+```
+
+`r page_break()`
+
+```{r tblm2, echo = FALSE}
+tb2 <- head(mtcars)
+kable(tb2, caption = "Some datasets.")
+
+```
+
+`r page_break("Figures")`
+
+```{r scatplt, echo = F, dpi = 300, fig.width = 5, fig.height = 5, fig.cap = "Scatter plot of XXX. Each point indicates XXXX."}
+
+img <- readPNG("scat.png", native = TRUE, info = TRUE)
+grid.raster(img, interpolate=F)
+
+```
+
+`r page_break()`
+
+```{r boxplt, echo = F, dpi = 300, fig.width = 5, fig.height = 5, fig.cap = "Boxplot of XXXX."}
+
+img <- readPNG("boxp.png", native = TRUE, info = TRUE)
+grid.raster(img, interpolate=F)
+
+```

@@ -1,0 +1,43 @@
+---
+geometry: margin=1in
+link-citations: yes
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ecology.csl
+bibliography: library.bib
+output:
+  bookdown::pdf_book:
+    fig_caption: true
+    keep_tex: yes
+    toc: no
+    number_sections: no
+    includes:
+        in_header: format.sty
+    pandoc_args:
+      - "--filter"
+      - "pandoc-crossref"
+  word_document:
+    fig_width: 6
+    reference_docx: rmd_style.docx
+    pandoc_args:
+    - "--filter"
+    - "pandoc-crossref"
+    - "--mathml"
+---
+
+
+```{r scatplt, echo = F, dpi = 300, fig.width = 5, fig.height = 5, fig.cap = "Scatter plot of XXX. Each point indicates XXXX."}
+
+img <- readPNG("scat.png", native = TRUE, info = TRUE)
+grid.raster(img, interpolate=F)
+
+```
+
+#####
+
+\newpage
+
+```{r boxplt, echo = F, dpi = 300, fig.width = 5, fig.height = 5, fig.cap = "Boxplot of XXXX."}
+
+img <- readPNG("boxp.png", native = TRUE, info = TRUE)
+grid.raster(img, interpolate=F)
+
+```

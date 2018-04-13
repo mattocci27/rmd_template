@@ -1,0 +1,57 @@
+---
+geometry: margin=1in
+link-citations: yes
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ecology.csl
+bibliography: library.bib
+documentclass: book
+fontsize: 12pt
+font-famliy: "Times New Roman"
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    template: rmd_template.tex
+    fig_caption: yes
+    keep_tex: yes
+    toc: no
+    number_sections: yes
+    includes:
+        in_header: format.sty
+    pandoc_args:
+      - "--filter"
+      - "pandoc-crossref"
+  bookdown::word_document2:
+    fig_width: 6
+    reference_docx: rmd_style.docx
+    fig_caption: yes
+    pandoc_args:
+    - "--filter"
+    - "pandoc-crossref"
+    - "--mathml"
+---
+
+
+```{r caching, include=FALSE}
+library(methods)
+library(knitr)
+library(kableExtra)
+library(png)
+library(grid)
+library(pander)
+library(kfigr)
+source("rmd_func.r")
+```
+
+
+
+# Supporting Information
+
+```{r stab, anchor = "table", tab.cap = "Dataset", echo = FALSE}
+knitr::kable(mtcars)
+```
+
+`r page_break()`
+
+```{r bar, anchor = "figure", echo = F, dpi = 300, fig.width = 5, fig.height = 5, fig.cap = "Bar plot of XXX."}
+grid.raster(img, interpolate=F)
+
+```
