@@ -2,7 +2,7 @@
 
 This template and example include:
 
-- Normal order for scientific papers (i.e., main text, references, tables and figures).
+- Common order for scientific papers (i.e., main text, references, tables and figures).
 - Page breaks for both word and pdf documents
 - Table and figure captions for main text and supporting information.
 
