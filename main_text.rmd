@@ -85,6 +85,7 @@ where $\beta_{jk}$ is xxxxxx. Prior for $\phi$ in Eq. \@ref(eq:NB) was specified
 
 We found XXX (Fig. \@ref(fig:scatplt) and Table \@ref(tab:tblm)). 
 We also found xxx (Fig. \@ref(fig:boxplt)) yay! 
+We did not find xxxx.
 
 # Discussion
 
