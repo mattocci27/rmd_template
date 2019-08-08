@@ -19,6 +19,17 @@ References:
 
 - https://github.com/svmiller/svm-r-markdown-templates
 
+## Rendering
+
+```{r}
+# rendering to PDF
+render("main_text.rmd", "bookdown::pdf_document2")
+
+# rendering to docx
+render("main_text.rmd", "bookdown::word_document2")
+
+```
+
 ## Example for main text
 
 ```{r caching, include=FALSE}
